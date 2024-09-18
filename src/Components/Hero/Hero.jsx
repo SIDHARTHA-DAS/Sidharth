@@ -71,7 +71,7 @@ const Hero = () => {
         <div className="container mx-auto px-4 py-28 text-center relative z-10">
           <div className="mb-8">
             <img
-              src="./public/img/pro2.jpg"
+              src="pro2.jpg"
               alt="Biography"
               className="w-52 h-62 rounded-xl mx-auto shadow-lg"
             />

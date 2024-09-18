@@ -6,18 +6,18 @@ const SkillSection = () => {
   const { theme } = useContext(ThemeContext);
 
   const skills = [
-    { name: 'HTML', image: './public/img/html-1.svg' },
-    { name: 'CSS', image: './public/img/css-3.svg' },
-    { name: 'JavaScript', image: './public/img/logo-javascript.svg' },
-    { name: 'React.js', image: './public/img/react-2.svg' },
-    { name: 'Tailwind CSS', image: './public/img/Tailwind_CSS_Logo.svg' },
-    { name: 'Git', image: './public/img/git-icon.svg' },
-    { name: 'GitHub', image: './public/img/icons8-github (1).svg' },
-    { name: 'Figma', image: './public/img/figma-1.svg' },
-    { name: 'Sketch', image: './public/img/sketch-2.svg' },
-    { name: 'Adobe XD', image: './public/img/adobe-xd-1.svg' },
-    { name: 'Photoshop', image: './public/img/adobe-photoshop-2.svg' },
-    { name: 'Canva', image: './public/img/Canva_icon_2021.svg' },
+    { name: 'HTML', image: 'html-1.svg' },
+    { name: 'CSS', image: 'css-3.svg' },
+    { name: 'JavaScript', image: 'logo-javascript.svg' },
+    { name: 'React.js', image: 'react-2.svg' },
+    { name: 'Tailwind CSS', image: 'Tailwind_CSS_Logo.svg' },
+    { name: 'Git', image: 'git-icon.svg' },
+    { name: 'GitHub', image: 'icons8-github (1).svg' },
+    { name: 'Figma', image: 'figma-1.svg' },
+    { name: 'Sketch', image: 'sketch-2.svg' },
+    { name: 'Adobe XD', image: 'adobe-xd-1.svg' },
+    { name: 'Photoshop', image: 'adobe-photoshop-2.svg' },
+    { name: 'Canva', image: 'Canva_icon_2021.svg' },
     // Add more skills as needed
   ];
 
