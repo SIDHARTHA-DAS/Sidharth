@@ -136,7 +136,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <p className="text-center text-gray-500 text-xl">
-          <a href="https://sidhartha-das.github.io/">Try 404 page?</a>
+          <a href="https://sidhartha-das.github.io/404page/">Try 404 page?</a>
         </p>
         <div
           className={`mt-11 p-11 border-t ${
