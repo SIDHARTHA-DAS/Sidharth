@@ -10,6 +10,8 @@ import ProjectsSection from "./Components/Works/ProjectsSection";
 import { useEffect, useState } from "react";
 import Loader from "./Components/Loader/Loader";
 import { ThemeProvider } from "./Components/ThemesContext/DarkTheme";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
+
 
 
 
@@ -33,12 +35,13 @@ function App() {
           <Router>
             <NavBar />
             <Routes>
-              <Route exact path="/" element={<Hero />} />
+              <Route exact path="/" element={<Hero />}/>
               <Route path="/skills" element={<SkillSection />} />
               <Route path="/qualification" element={<QualificationSection />} />
               <Route path="/achievement" element={<AchievementList />} />
               <Route path="/projects" element={<ProjectsSection />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<ErrorPage/>} />
             </Routes>
             <Footer />
           </Router>

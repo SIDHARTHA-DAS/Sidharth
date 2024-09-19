@@ -1,9 +1,7 @@
-
-
 const Skills = ({ skill }) => {
   return (
     <div className="relative z-0 p-4 text-center flex flex-col items-center cursor-pointer bg-gradient-to-br from-gray-500 to-blue-500 rounded-lg overflow-hidden shadow-lg">
-      <div className="absolute inset-0 bg-opacity-30 bg-no-repeat bg-cover"/>
+      <div className="absolute inset-0 bg-opacity-30 bg-no-repeat bg-cover" />
       <div className="relative z-10 flex flex-col items-center">
         <img
           src={skill.image}
