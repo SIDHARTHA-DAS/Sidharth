@@ -95,6 +95,12 @@ const ProjectsSection = () => {
       description: "A brief description of Project Two.",
       link: "https://shope-one.vercel.app/",
     },
+    {
+      title: "PokeWorld Web",
+      image: "project15.webp",
+      description: "A brief description of Project Two.",
+      link: "https://poke-world-sooty.vercel.app/",
+    },
   ];
 
   return (
