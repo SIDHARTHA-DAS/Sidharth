@@ -1,6 +1,6 @@
 const Achievement = ({ title, description, icon }) => {
   return (
-    // <div className="group bg-gray-800 dark:bg-gray-900 p-6 rounded-full shadow-lg ">
+
       <div className="relative flex h-[12em] w-[18em] items-center justify-center rounded-[1.5em] border-[1px] border-[#070607] bg-gray-500 p-[1.5em] text-lime-300 m-auto">
         <div className="group absolute left-1/2 top-1/2 flex h-[3em] w-[3em] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-[1.5em] border-[1px] border-[#ffffffaa] bg-[#8988885c] backdrop-blur-[6px] duration-[500ms] hover:h-[10em] hover:w-[16em] hover:rounded-[1.5em]">
           <svg
@@ -42,7 +42,7 @@ const Achievement = ({ title, description, icon }) => {
           hover over the info icon {icon}
         </h1>
       </div>
-    // </div>
+
   );
 };
 
