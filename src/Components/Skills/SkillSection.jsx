@@ -18,16 +18,26 @@ const SkillSection = () => {
     { name: 'Adobe XD', image: 'adobe-xd-1.svg' },
     { name: 'Photoshop', image: 'adobe-photoshop-2.svg' },
     { name: 'Canva', image: 'Canva_icon_2021.svg' },
-    // Add more skills as needed
   ];
 
   return (
-    <section className={`py-28 ${theme === "dark" ? "bg-gray-800" : "bg-gray-400"}`}>
-      <div className="container mx-auto px-4">
-        <h2 className={`text-4xl font-bold text-center mb-28 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-          Skills👨‍💻
+    <section className={`py-28 relative overflow-hidden ${
+      theme === "dark" ? "bg-[#0b0f19]" : "bg-gray-200"
+    }`}>
+
+      {/* 🔥 Background Gradient Blobs */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-600/30 blur-3xl rounded-full" />
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-600/30 blur-3xl rounded-full" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className={`text-5xl font-extrabold text-center mb-20 tracking-wide drop-shadow-lg ${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        }`}>
+          Skills 🚀
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 h-[30%] w-[60%] m-auto">
+
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
           {skills.map((skill) => (
             <Skills key={skill.name} skill={skill} />
           ))}
@@ -38,6 +48,7 @@ const SkillSection = () => {
 };
 
 export default SkillSection;
+
 
 
 // import Skills from "./Skills";

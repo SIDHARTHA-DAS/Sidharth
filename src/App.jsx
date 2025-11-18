@@ -23,7 +23,7 @@ function App() {
     // Simulate loading delay
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // Adjust this delay as per your need
+    }, 1500); // Adjust this delay as per your need
   }, []);
 
   return (

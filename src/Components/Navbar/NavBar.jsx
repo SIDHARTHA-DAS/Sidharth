@@ -4,6 +4,7 @@ import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { DarkLight, ThemeContext } from "../ThemesContext/DarkTheme";
 
+
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useContext(ThemeContext);
@@ -27,7 +28,7 @@ const NavBar = () => {
     <nav
       className={`${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
-      } drop-shadow-2xl fixed w-full z-10 transition-colors duration-500`}
+      } drop-shadow-2xl fixed w-full z-50 transition-colors duration-500 `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
@@ -65,7 +66,7 @@ const NavBar = () => {
             </Link>
             {/* Dark/Light Toggle */}
             <div className="flex mx-5">
-              <DarkLight />
+              <DarkLight/>
             </div>
           </div>
 

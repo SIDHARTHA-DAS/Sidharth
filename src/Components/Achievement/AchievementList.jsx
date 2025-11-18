@@ -1,254 +1,122 @@
-import { useContext, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaAward, FaTrophy, FaMedal } from 'react-icons/fa'; // Using react-icons for icons
-import { ThemeContext } from '../ThemesContext/DarkTheme'; // Import ThemeContext
+import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
-const achievements = [
-  {
-    id: '1', // Add unique IDs for layoutId
-    title: 'Best Developer Award',
-    description: 'Student Ambassador @LetsUpgrade EdTech Pvt. Ltd.',
-    icon: <FaAward />,
-    click: "click Me",
-  },
-  {
-    id: '2',
-    title: 'Top Performer',
-    description: 'Intern @Cognifyz.com Web development.',
-    icon: <FaTrophy />,
-    click: "click Me",
-  },
-  {
-    id: '3',
-    title: 'Certified React Developer',
-    description: 'Intern @Gulcian Html, Css, Js.',
-    icon: <FaMedal />,
-    click: "click Me",
-  },
-  {
-    id: '4',
-    title: 'Certified React Developer',
-    description: 'Intern @IIG VARSITY Bhubaneswar Core Java',
-    icon: <FaMedal />,
-    click: "click Me",
-  },
-  {
-    id: '5',
-    title: 'Certified React Developer',
-    description: 'Intern @Protrainy Pvt.Ltd Bhubaneswar Product Management',
-    icon: <FaMedal />,
-    click: "click Me",
-  },
-  {
-    id: '6',
-    title: 'Asia AI Odyssey Challenge',
-    description: 'Challenge From Microsoft',
-    icon: <FaMedal />,
-    click: "click Me"
-  },
-];
-
-const AchievementList = () => {
-  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-  const [selectedId, setSelectedId] = useState(null); // State for selected achievement
-  
+export default function AchievementsSection() {
   return (
-    <div
-    className={`min-h-screen py-28 ${
-      theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-400 text-black'
-      } transition-colors duration-500`}
-      >
-      <div className="container mx-auto px-4">
-        <h2
-          className={`text-4xl font-bold text-center mb-12 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-800'
-            }`}
-          >
-          Achievements🏆
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {achievements.map((achievement) => (
-            <motion.div
-            key={achievement.id}
-              layoutId={achievement.id}
-              onClick={() => setSelectedId(achievement.id)}
-              className="flex flex-col items-center cursor-pointer p-4 h-[300px] bg-gray-900 text-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-            >
-              <div className="text-3xl mb-2">{achievement.icon}</div>
-              <h3 className="text-lg font-semibold">{achievement.title}</h3>
-              <p className="text-sm text-gray-600">{achievement.description}</p>
-              <button className="text-sm text-gray-200 m-11 p-1 border rounded-lg">{achievement.click}</button>
-            </motion.div>
-          ))}
-        </div>
+    <div className="w-full min-h-screen bg-gradient-to-br from-[#0c0f1a] to-[#1a1f2e] text-white py-20 px-4 md:px-10 overflow-hidden">
+      {/* Gradient Liquid Blob Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 bg-purple-600 opacity-30 blur-3xl rounded-full"
+          animate={{ x: [0, 50, -50, 0], y: [0, -40, 40, 0] }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-72 h-72 bg-blue-600 opacity-30 blur-3xl rounded-full"
+          animate={{ x: [0, -60, 60, 0], y: [0, 40, -40, 0] }}
+          transition={{ duration: 14, repeat: Infinity }}
+        />
       </div>
-      <AnimatePresence>
-        {selectedId && (
+
+      <h1 className="text-center text-4xl md:text-6xl font-extrabold mb-16 drop-shadow-xl">
+        🚀 Achievements
+      </h1>
+
+      {/* 3D Flip Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
+        {[
+          { title: "100+ Projects", desc: "Completed with Passion" },
+          { title: "5+ Internships", desc: "Worked with top companies" },
+          { title: "3 Years Experience", desc: "Frontend Excellence" },
+        ].map((item, index) => (
           <motion.div
-          layoutId={selectedId}
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-            onClick={() => setSelectedId(null)}
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="relative group bg-white/10 backdrop-blur-2xl border border-white/20 
+                 rounded-3xl shadow-2xl p-8 text-center cursor-pointer 
+                 hover:bg-white/20 hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]
+                 transition-all duration-500"
           >
+            {/* Front Content */}
+            <div>
+              <h2 className="text-3xl font-bold">{item.title}</h2>
+              <p className="mt-3 text-gray-300">{item.desc}</p>
+            </div>
+
+            {/* Slide Reveal Content */}
             <motion.div
-              className="bg-white p-8 rounded-lg shadow-lg text-center"
-              onClick={(e) => e.stopPropagation()} // Prevent click on inner content from closing
-              >
-              {achievements.find(item => item.id === selectedId) && (
-                <>
-                  <h5 className="text-xl font-bold">
-                    {achievements.find(item => item.id === selectedId).title}
-                  </h5>
-                  <p className="text-md text-gray-700">
-                    {achievements.find(item => item.id === selectedId).description}
-                  </p>
-                  <motion.button
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
-                    onClick={() => setSelectedId(null)}
-                  >
-                    Close
-                  </motion.button>
-                </>
-              )}
+              initial={{ x: "100%", opacity: 0 }}
+              whileHover={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 120, damping: 14 }}
+              className="absolute inset-0 bg-black/100 backdrop-blur-3xl 
+                   rounded-3xl p-8 flex flex-col items-center justify-center 
+                   text-center border border-white/30 shadow-xl"
+            >
+              <h2 className="text-2xl font-bold">🔥 Achievement</h2>
+              <p className="mt-3 text-gray-100">Well Deserved!</p>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        ))}
+      </div>
+
+      {/* Apple Vision Pro Style Vertical Timeline */}
+      <div className="mt-28 relative max-w-4xl mx-auto">
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500 -translate-x-1/2" />
+        {[
+          { year: "2021", text: "Started Web Development Journey" },
+          { year: "2022", text: "Mastered React & Tailwind" },
+          { year: "2023", text: "Worked with Multiple Companies" },
+          { year: "2024", text: "Built Full Stack Projects" },
+        ].map((step, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className={`relative w-full flex ${
+              i % 2 === 0 ? "justify-start" : "justify-end"
+            } mb-16`}
+          >
+            <div className="bg-white/10 backdrop-blur-xl px-6 py-4 rounded-xl shadow-lg w-72">
+              <h3 className="text-xl font-bold mb-1">{step.year}</h3>
+              <p className="text-gray-200">{step.text}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Rotating Cube Style Projects */}
+      <h2 className="text-center text-4xl font-bold mt-24 mb-10">
+        🎯 Project Showcase
+      </h2>
+      <div className="flex justify-center">
+        <motion.div
+          animate={{ rotateY: [0, 360] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="w-48 h-48 bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl flex items-center justify-center text-xl font-bold"
+        >
+          <NavLink to={"/projects"}>Click here</NavLink>
+        </motion.div>
+      </div>
+
+      {/* Hologram Effect */}
+      <h2 className="text-center text-4xl font-bold mt-24 mb-6">
+        🛸 Hologram Achievement
+      </h2>
+      <div className="flex justify-center">
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-72 h-40 bg-white/20 backdrop-blur-xl border border-cyan-300/30 shadow-[0_0_30px_#00eaff] text-center p-6 rounded-xl"
+        >
+          <h3 className="text-2xl font-bold drop-shadow-md">Web Developer</h3>
+          <p className="mt-2 text-gray-100">Glowing Achievement Badge</p>
+        </motion.div>
+      </div>
     </div>
   );
-};
-
-export default AchievementList;
-
-// import { useContext } from 'react';
-              // // import Achievement from './Achievement';
-              // import { FaAward, FaTrophy, FaMedal } from 'react-icons/fa'; // Using react-icons for icons
-              // import { ThemeContext } from '../ThemesContext/DarkTheme'; // Import ThemeContext
-              
-              // const achievements = [
-              //   {
-              //     title: 'Best Developer Award',
-              //     description: 'Student Ambassador @LetsUpgrade EdTech Pvt. Ltd.',
-              //     icon: <FaAward />,
-              //   },
-              //   {
-                //     title: 'Top Performer',
-              //     description: 'Intern @Cognifyz.com Web development.',
-              //     icon: <FaTrophy />,
-              //   },
-              //   {
-              //     title: 'Certified React Developer',
-              //     description: 'Intern @Gulcian Html, Css, Js.',
-              //     icon: <FaMedal />,
-              //   },
-              //   {
-              //     title: 'Certified React Developer',
-              //     description: 'Intern @IIG VARSITY Bhubaneswar Core Java',
-              //     icon: <FaMedal />,
-              //   },
-              //   {
-              //     title: 'Certified React Developer',
-              //     description: 'Intern @Protrainy Pvt.Ltd Bhubaneswar Product Management',
-              //     icon: <FaMedal />,
-              //   },
-              //   {
-                //     title: 'Asia AI Odyssey Challenge',
-              //     description: 'Challenge From Microsoft',
-              //     icon: <FaMedal />,
-              //   },
-              // ];
-              
-              // const AchievementList = () => {
-              //   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-              
-              //   return (
-              //     <div
-              //       className={`min-h-screen py-28 ${
-              //         theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-400 text-black'
-              //       } transition-colors duration-500`}
-              //     >
-              //       <div className="container mx-auto px-4">
-              //         <h2
-              //           className={`text-4xl font-bold text-center mb-12 ${
-              //             theme === 'dark' ? 'text-white' : 'text-gray-800'
-              //           }`}
-              //         >
-              //           Achievements🏆
-              //         </h2>
-              //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              //           {achievements.map((achievement, index) => (
-              //             <Achievement
-              //               key={index}
-              //               title={achievement.title}
-              //               description={achievement.description}
-              //               icon={achievement.icon}
-              //               theme={theme} // Pass the theme to each Achievement component if necessary
-              //             />
-              //           ))}
-              //         </div>
-              //       </div>
-              //     </div>
-              //   );
-              // };
-              
-              // export default AchievementList;
-              
-              
-              // // import Achievement from './Achievement';
-              // // import { FaAward, FaTrophy, FaMedal } from 'react-icons/fa'; // Using react-icons for icons
-              
-              // // const achievements = [
-              // //   {
-              // //     title: 'Best Developer Award',
-              // //     description: 'Student Ambassador @LetsUpgrade EdTech Pvt. Ltd.  ',
-              // //     icon: <FaAward />,
-              // //   },
-              // //   {
-              // //     title: 'Top Performer',
-              // //     description: 'Intern @Cognifyz.com Web development.',
-              // //     icon: <FaTrophy />,
-              // //   },
-              // //   {
-              // //     title: 'Certified React Developer',
-              // //     description: ' Intern @Gulcian Html,Css,Js .',
-              // //     icon: <FaMedal />,
-              // //   },
-              // //   {
-              // //     title: 'Certified React Developer',
-              // //     description: 'Intern @IIG  VARSITY Bhubaneswar Core Java',
-              // //     icon: <FaMedal />,
-              // //   },
-              // //   {
-              // //     title: 'Certified React Developer',
-              // //     description: 'Intern @Protrainy Pvt.Ltd Bhubaneswar Product Management',
-              // //     icon: <FaMedal />,
-              // //   },
-              // //   {
-              // //     title: 'Certified React Developer',
-              // //     description: 'Asia AI Odyssey Challenge From Microsoft',
-              // //     icon: <FaMedal />,
-              // //   },
-              // // ];
-              
-              // // const AchievementList = () => {
-                // //   return (
-              // //     <div className="bg-gray-900 dark:bg-gray-800 min-h-screen py-28">
-              // //       <div className="container mx-auto px-4">
-              // //         <h2 className="text-4xl font-bold text-center text-white mb-12">
-              // //           Achievements🏆
-              // //         </h2>
-              // //         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
-              // //           {achievements.map((achievement, index) => (
-                // //             <Achievement
-                // //               key={index}
-                // //               title={achievement.title}
-                // //               description={achievement.description}
-                // //               icon={achievement.icon}
-              // //             />
-              // //           ))}
-              // //         </div>
-              // //       </div>
-              // //     </div>
-              // //   );
-              // // };
-              
-              // // export default AchievementList;
+}
