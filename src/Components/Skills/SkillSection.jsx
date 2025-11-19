@@ -21,7 +21,8 @@ const SkillSection = () => {
   ];
 
   return (
-    <section className={`py-28 relative overflow-hidden ${
+    <>
+    {<section className={`py-28 relative overflow-hidden ${
       theme === "dark" ? "bg-[#0b0f19]" : "bg-gray-200"
     }`}>
 
@@ -43,7 +44,8 @@ const SkillSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </section>}
+    </>
   );
 };
 

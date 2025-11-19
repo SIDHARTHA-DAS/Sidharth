@@ -1,35 +1,81 @@
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(-1);
-  };
+  const handleClick = () => navigate(-1);
+
   return (
-    <div className="h-svh w-svw flex flex-col items-center justify-center bg-gray-600 text-gray-200">
-      <h1 className="text-[clamp(5rem,40vmin,20rem)] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600 animate-swing relative mb-4">
+    <div className="h-svh w-svw flex flex-col items-center justify-center relative overflow-hidden bg-black text-gray-200">
+
+      {/* Animated Gradient Background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,195,255,0.3),transparent_60%),radial-gradient(circle_at_80%_70%,rgba(255,0,180,0.25),transparent_60%)] animate-pulse"
+      />
+
+      {/* Floating 3D 404 */}
+      <motion.h1
+        initial={{ scale: 0.5, opacity: 0, rotateX: -45 }}
+        animate={{ scale: 1, opacity: 1, rotateX: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        whileHover={{ rotateX: 15, rotateY: -15 }}
+        className="text-[clamp(5rem,40vmin,20rem)] font-extrabold text-transparent bg-clip-text 
+                   bg-gradient-to-br from-cyan-400 to-pink-500 drop-shadow-[0_0_40px_rgba(0,200,255,0.6)]
+                   relative mb-10 cursor-pointer"
+      >
         404
-        <span className="absolute top-0 left-0 text-black blur-[1.5vmin] transform scale-[1.05] translate-y-[12%]">
-          404
-        </span>
-      </h1>
 
-      <div className="relative overflow-hidden w-screen h-screen  top-0 left-0 flex items-center justify-center">
-        <div className="absolute w-[250vmax] h-[250vmax] transform translate-x-[-50%] translate-y-[-50%]">
-          <div className="w-full h-full rounded-full bg-gradient-radial from-transparent to-black animate-cloak" />
-        </div>
-      </div>
+        {/* Glow Layer */}
+        <span className="absolute inset-0 blur-3xl opacity-40 bg-gradient-to-br from-cyan-300 to-pink-400"></span>
+      </motion.h1>
 
-      <div className="relative text-center max-w-[90vw] md:max-w-[25rem] mb-[100px]">
-        <h2 className="text-2xl font-bold mb-4">{`We can't`} find that page</h2>
-        <p className="mb-8">
-          {`We're`} fairly sure that page used to be here, but it seems to have gone missing.
-          We apologize on its behalf.
+      {/* Glassmorphic Card */}
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="backdrop-blur-xl bg-white/10 px-8 py-6 rounded-2xl shadow-2xl 
+                   border border-white/10 text-center max-w-[90vw] md:max-w-[26rem]"
+      >
+        <h2 className="text-2xl font-bold mb-3">
+          Page Not Found
+        </h2>
+
+        <p className="text-gray-300 mb-6">
+          This page seems to have slipped into another dimension.  
+          Don’t worry — you can return safely.
         </p>
-        <button className="mx-11 uppercase bg-gray-300 text-black px-8 py-2 rounded-full text-sm font-bold tracking-wider hover:bg-gray-400 transition-color" onClick={handleClick} >Go Back</button>
-      </div>
+
+        {/* Futuristic Button */}
+        <motion.button
+          whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0,200,255,0.6)" }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleClick}
+          className="px-10 py-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-black
+                     font-semibold tracking-wider shadow-md hover:shadow-cyan-500/50 transition-all"
+        >
+          Go Back
+        </motion.button>
+      </motion.div>
+
+      {/* Floating Orbs */}
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute bottom-10 left-10 w-32 h-32 bg-cyan-400/20 blur-2xl rounded-full"
+      />
+
+      <motion.div
+        animate={{ y: [0, 20, 0] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute top-20 right-10 w-40 h-40 bg-pink-500/20 blur-2xl rounded-full"
+      />
     </div>
   );
 };
 
 export default ErrorPage;
+

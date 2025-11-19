@@ -7,8 +7,6 @@ import QualificationSection from "./Components/Qualifications/QualificationSecti
 import SkillSection from "./Components/Skills/SkillSection";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectsSection from "./Components/Works/ProjectsSection";
-import { useEffect, useState } from "react";
-import Loader from "./Components/Loader/Loader";
 import { ThemeProvider } from "./Components/ThemesContext/DarkTheme";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
@@ -16,21 +14,11 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  
-
-  useEffect(() => {
-    // Simulate loading delay
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500); // Adjust this delay as per your need
-  }, []);
+ 
 
   return (
     <div>
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {
         <ThemeProvider>
           <Router>
             <NavBar />
@@ -46,12 +34,10 @@ function App() {
             <Footer />
           </Router>
         </ThemeProvider>
-      )}
+      }
     </div>
   );
 }
 
 
 export default App;
-
-

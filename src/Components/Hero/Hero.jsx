@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Particles } from "react-tsparticles";
+import Loader from "../Loader/Loader";
 
 const Hero = () => {
   // Toast Trigger Function
@@ -31,8 +32,19 @@ const Hero = () => {
     // You can load custom shapes here if needed
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+    
+  
+    useEffect(() => {
+      // Simulate loading delay
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500); // Adjust this delay as per your need
+    }, [])
+
   return (
     <>
+    { isLoading ? (<Loader/>) : (
       <section className="relative z-0 flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-slate-800 via-teal-900 to-gray-800 dark:text-gray-100 overflow-hidden">
 
         {/* Particles Background */}
@@ -132,7 +144,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>)}
     </>
   );
 };
