@@ -28,7 +28,9 @@ const ProjectsSection = () => {
     { title: "ShopOne Web", image: "project14.webp", link: "https://shope-one.vercel.app/" },
     { title: "PokeWorld", image: "project15.webp", link: "https://poke-world-sooty.vercel.app/" },
     { title: "BookStore", image: "project16.webp", link: "https://book-buy.vercel.app/" },
-    { title: "WorldFlag Web", image: "project17.webp", link: "https://world-flag-mocha.vercel.app/" }
+    { title: "WorldFlag Web", image: "project17.webp", link: "https://world-flag-mocha.vercel.app/" },
+    { title: "CarBuy", image: "project18.webp", link: "https://car-buy1.vercel.app/" },
+    { title: "quickShow", image: "project19.webp", link: "https://movieshow-sooty.vercel.app/" },
   ];
 
   return (
