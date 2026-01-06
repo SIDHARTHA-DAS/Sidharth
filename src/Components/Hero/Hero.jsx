@@ -124,7 +124,7 @@ const Hero = () => {
 
               <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 text-center">
                 <h3 className="text-xl font-semibold">Completed Projects</h3>
-                <p className="text-4xl font-bold mt-2">19+</p>
+                <p className="text-4xl font-bold mt-2">20+</p>
               </div>
 
               <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 text-center">
